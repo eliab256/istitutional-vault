@@ -11,7 +11,7 @@ struct KYCRecord {
 }
 
 struct Signer {
-    bytes32 role;
+    Role role;
     uint8 weight;
 }
 
@@ -23,8 +23,6 @@ enum Role {
 
 struct Proposal {
     address target;
-    bool executed;
-    uint8 totalWeight;
     bytes data;
     uint256 value;
     uint256 nonce;
