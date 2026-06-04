@@ -18,6 +18,8 @@ contract ComplianceGate is AccessControl {
     error ComplianceGate__AddressNotApproved(address addr);
     error ComplianceGate__AddressExpired(address addr);
 
+    address internal immutable i_custodyCore;
+
     /// @dev Wallet freeze status
     mapping(address => bool) internal s_frozenAddresses;
 
@@ -32,12 +34,8 @@ contract ComplianceGate is AccessControl {
         _;
     }
 
-    constructor(address _complianceGate) {
-
-    }
-
-    function setCompliaceGate(address _complianceGate) external onlyRole(R.HSM_MULTISIG_ROLE) {
-
+    constructor(address _custodyCore) {
+        i_custodyCore = _custodyCore;
     }
 
     // @audit-info check gestione level
